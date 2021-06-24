@@ -25,12 +25,13 @@ tracks/0/keys = {
 
 [node name="Player" type="Area2D"]
 collision_layer = 0
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 22
-frame = 1
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -45,3 +46,5 @@ collide_with_areas = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Idle = SubResource( 2 )
+
+[connection signal="tween_all_completed" from="TweenMove" to="." method="_on_TweenMove_tween_all_completed"]

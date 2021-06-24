@@ -32,7 +32,7 @@ func _get_movement_inputs():
 		
 	for dir in inputs.keys():
 		if Input.is_action_pressed(dir):
-			_set_sprite(dir)
+			_set_sprite_flip(dir)
 			_update_move_ray(dir)
 			
 			if not move_ray.is_colliding():
@@ -53,6 +53,26 @@ func _tween_movement(dir):
 								Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween_move.start()
 
-func _set_sprite(dir):
+func _set_sprite_flip(dir):
 	if inputs[dir].x != 0:
 		sprite.scale.x = inputs[dir].x
+
+func _get_floor_name():
+	for b in get_overlapping_bodies():
+		if b is TileMap:
+			var tile_pos = b.world_to_map(position)
+			var tile_id = b.get_cellv(tile_pos)
+			var tile_name = b.tile_set.tile_get_name(tile_id)
+			match tile_name:
+				"RedFloor":
+					print("RED")
+				"BlueFloor":
+					print("BLUE")
+				"GreenFloor":
+					print("GREEN")
+			return true
+	return false
+
+func _on_TweenMove_tween_all_completed():
+	var some_floor = _get_floor_name()
+	print(some_floor)
