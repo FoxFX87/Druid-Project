@@ -1,4 +1,5 @@
 extends Area2D
+class_name Projectile
 
 export (int) var speed = 200
 var direction : Vector2 setget _set_direction
