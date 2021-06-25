@@ -15,11 +15,14 @@ export var tile_move_speed : float = 4.0
 onready var sprite = $Sprite
 onready var move_ray = $MoveRay
 onready var tween_move = $TweenMove
+onready var current_projectile = Objects.PROJECTILES["neutral"]
 
 func _ready():
 	_start_grid_position()
 
 func _process(_delta):
+	if not tween_move.is_active():
+		_test_attack()
 	_get_movement_inputs()
 
 func _start_grid_position():
@@ -65,14 +68,22 @@ func _get_floor_name():
 			var tile_name = b.tile_set.tile_get_name(tile_id)
 			match tile_name:
 				"RedFloor":
-					print("RED")
+					current_projectile = Objects.PROJECTILES["red"]
+					return
 				"BlueFloor":
-					print("BLUE")
+					current_projectile = Objects.PROJECTILES["blue"]
+					return
 				"GreenFloor":
-					print("GREEN")
-			return true
-	return false
+					current_projectile = Objects.PROJECTILES["green"]
+					return
+	current_projectile = Objects.PROJECTILES["neutral"]
+
+func _test_attack():
+	if Input.is_action_just_pressed("in_attack"):
+		var p = current_projectile.instance()
+		p.position = global_position
+		p.direction = Vector2.UP
+		get_parent().add_child(p)
 
 func _on_TweenMove_tween_all_completed():
-	var some_floor = _get_floor_name()
-	print(some_floor)
+	_get_floor_name()
