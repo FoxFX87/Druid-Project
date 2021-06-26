@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://src/Projectiles/BaseProjectile.gd"
 }, {
 "base": "Area2D",
+"class": "PushObject",
+"language": "GDScript",
+"path": "res://src/Actors/PushableStone.gd"
+}, {
+"base": "Area2D",
 "class": "player",
 "language": "GDScript",
 "path": "res://src/Actors/Player.gd"
 } ]
 _global_script_class_icons={
 "Projectile": "",
+"PushObject": "",
 "player": ""
 }
 

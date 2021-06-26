@@ -3,7 +3,7 @@ class_name player
 
 const CELL_SIZE = 16
 
-enum STATE {IDLE, MOVE, PUSH, PREPARE_ATTACK, ATTACK}
+enum STATE {MOVE, PUSH, PREPARE_ATTACK, ATTACK}
 
 var inputs = {
 	"ui_right" : Vector2.RIGHT,
@@ -12,21 +12,74 @@ var inputs = {
 	"ui_down" : Vector2.DOWN,
 }
 
-export var tile_move_speed : float = 4.0
+export var tile_move_speed : float = 6.0
 
 onready var sprite = $Sprite
 onready var move_ray = $MoveRay
 onready var tween_move = $TweenMove
+onready var anim = $AnimationPlayer
 onready var current_projectile = PreloadedScenes.PROJECTILES["neutral"]
 
 var current_state
+var move_vector : Vector2 setget _set_move_vector
+var push_target : PushObject
 
 func _ready():
 	_start_grid_position()
-	_transition_to_state(STATE.IDLE)
+	_transition_to_state(STATE.MOVE)
 
 func _process(_delta):
-	_get_movement_inputs()
+	
+	if move_vector.x != 0:
+		sprite.scale.x = move_vector.x
+	
+	match current_state:
+			
+		STATE.MOVE:
+			var _anim = anim.play("Move") if tween_move.is_active() else anim.play("Idle")
+			
+			if tween_move.is_active():
+				return
+			
+			for dir in inputs.keys():
+				if Input.is_action_pressed(dir):
+					move_vector = inputs[dir]
+					_set_sprite_flip(dir)
+					_update_move_ray(dir)
+					
+					if not move_ray.is_colliding():
+						_move_towards_direction(dir)
+						
+					if move_ray.is_colliding():
+						var obj = move_ray.get_collider()
+						if obj.is_in_group("Push"):
+							push_target = obj
+							_transition_to_state(STATE.PUSH)
+				
+			if Input.is_action_pressed("in_attack"):
+				_transition_to_state(STATE.PREPARE_ATTACK)
+				
+		STATE.PUSH:
+			var _anim = anim.play("Push")
+			
+		STATE.PREPARE_ATTACK:
+			var _anim = anim.play("Prepare Attack")
+			
+			if Input.is_action_just_pressed("in_attack"):
+				_transition_to_state(STATE.MOVE)
+				
+			for dir in inputs.keys():
+				if Input.is_action_just_pressed(dir):
+					_update_move_ray(dir)
+					move_vector = inputs[dir]
+					
+					_transition_to_state(STATE.ATTACK)
+			
+		STATE.ATTACK:
+			var _anim = anim.play("Attack")
+	
+func _set_move_vector(_vec : Vector2):
+	move_vector = _vec
 
 func _transition_to_state(_state):
 	if current_state != _state:
@@ -36,18 +89,6 @@ func _start_grid_position():
 	position = position.snapped(Vector2.ONE * CELL_SIZE)
 	position -= Vector2.ONE * CELL_SIZE/2
 
-func _get_movement_inputs():
-	if tween_move.is_active():
-		return
-		
-	for dir in inputs.keys():
-		if Input.is_action_pressed(dir):
-			_set_sprite_flip(dir)
-			_update_move_ray(dir)
-			
-			if not move_ray.is_colliding():
-				_move_towards_direction(dir)
-	
 func _update_move_ray(dir):
 	var vector_pos = inputs[dir] * CELL_SIZE
 	move_ray.cast_to = vector_pos
@@ -85,12 +126,18 @@ func _get_floor_name():
 					return
 	current_projectile = PreloadedScenes.PROJECTILES["neutral"]
 
-func _attack_in_direction(dir):
+func _attack_in_direction():
 	var p : Projectile = current_projectile.instance()
-	p.direction = inputs[dir]
+	p.direction = move_vector
 	p.position = global_position
-	p.direction = Vector2.UP
 	get_parent().add_child(p)
+
+func _push_block_toward():
+	push_target.push_to(move_vector)
+
+func _transition_to_start():
+	_transition_to_state(STATE.MOVE)
 
 func _on_TweenMove_tween_all_completed():
 	_get_floor_name()
+
