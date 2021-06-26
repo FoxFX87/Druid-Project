@@ -23,6 +23,7 @@ onready var current_projectile = PreloadedScenes.PROJECTILES["neutral"]
 var current_state
 var move_vector : Vector2 setget _set_move_vector
 var push_target : PushObject
+var push_vector : Vector2 setget _set_push_vector
 
 func _ready():
 	_start_grid_position()
@@ -54,6 +55,7 @@ func _process(_delta):
 						var obj = move_ray.get_collider()
 						if obj.is_in_group("Push"):
 							push_target = obj
+							push_vector = inputs[dir]
 							_transition_to_state(STATE.PUSH)
 				
 			if Input.is_action_pressed("in_attack"):
@@ -80,6 +82,9 @@ func _process(_delta):
 	
 func _set_move_vector(_vec : Vector2):
 	move_vector = _vec
+	
+func _set_push_vector(_vec : Vector2):
+	push_vector = _vec
 
 func _transition_to_state(_state):
 	if current_state != _state:
@@ -133,7 +138,7 @@ func _attack_in_direction():
 	get_parent().add_child(p)
 
 func _push_block_toward():
-	push_target.push_to(move_vector)
+	push_target.push_to(push_vector)
 
 func _transition_to_start():
 	_transition_to_state(STATE.MOVE)
