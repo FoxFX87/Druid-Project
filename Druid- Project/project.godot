@@ -39,6 +39,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PreloadedScenes="*res://src/Singletons/PreloadedScenes.gd"
+CamShake="*res://src/Singletons/CamShake.gd"
 
 [display]
 

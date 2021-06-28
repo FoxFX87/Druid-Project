@@ -29,3 +29,7 @@ position = Vector2( 184, 56 )
 
 [node name="PushableStone4" parent="PushableStones" instance=ExtResource( 4 )]
 position = Vector2( 280, 104 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true

@@ -58,7 +58,7 @@ func _process(_delta):
 							push_vector = inputs[dir]
 							_transition_to_state(STATE.PUSH)
 				
-			if Input.is_action_pressed("in_attack"):
+			if Input.is_action_just_pressed("in_attack"):
 				_transition_to_state(STATE.PREPARE_ATTACK)
 				
 		STATE.PUSH:
