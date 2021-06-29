@@ -11,6 +11,7 @@ collision_layer = 0
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="ProjectileParticle" parent="." instance=ExtResource( 2 )]

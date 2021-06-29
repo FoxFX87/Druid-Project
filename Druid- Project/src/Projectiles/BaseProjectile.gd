@@ -19,7 +19,7 @@ func _destroy():
 	queue_free()
 
 func _on_BaseProjectile_area_entered(_area):
-	 queue_free()
+	_destroy()
 
 func _on_BaseProjectile_body_entered(_body):
-	 queue_free()
+	_destroy()
