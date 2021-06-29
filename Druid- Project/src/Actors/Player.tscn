@@ -123,7 +123,7 @@ tracks/1/keys = {
 
 [node name="Player" type="Area2D"]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
