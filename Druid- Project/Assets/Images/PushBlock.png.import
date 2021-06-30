@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spr_hit_effect.png-1ef78be0e46543cc0f97c7d7bc0e5183.stex"
+path="res://.import/PushBlock.png-c46407996d1f752a132827f126bc8bef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/spr_hit_effect.png"
-dest_files=[ "res://.import/spr_hit_effect.png-1ef78be0e46543cc0f97c7d7bc0e5183.stex" ]
+source_file="res://Assets/Images/PushBlock.png"
+dest_files=[ "res://.import/PushBlock.png-c46407996d1f752a132827f126bc8bef.stex" ]
 
 [params]
 

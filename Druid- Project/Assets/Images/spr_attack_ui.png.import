@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spr_dust_effect.png-6786cf70ed51d7a31705f6622d12e023.stex"
+path="res://.import/spr_attack_ui.png-cd256bf7649a80f6d93812864bc024a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/spr_dust_effect.png"
-dest_files=[ "res://.import/spr_dust_effect.png-6786cf70ed51d7a31705f6622d12e023.stex" ]
+source_file="res://Assets/Images/spr_attack_ui.png"
+dest_files=[ "res://.import/spr_attack_ui.png-cd256bf7649a80f6d93812864bc024a0.stex" ]
 
 [params]
 

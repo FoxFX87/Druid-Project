@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/spr_dust_effect.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/spr_dust_effect.png" type="Texture" id=1]
 [ext_resource path="res://src/Animated Effects/DustEffect.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -43,5 +43,4 @@ frame = 1
 
 [node name="Effect" type="AnimationPlayer" parent="."]
 autoplay = "Effect"
-playback_speed = 0.25
 anims/Effect = SubResource( 1 )

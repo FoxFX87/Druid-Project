@@ -1,12 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Assets/spr_druid_005.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/spr_druid_005.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Audio/player_step.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/impact_on_block.ogg" type="AudioStream" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7, 7 )
+[ext_resource path="res://src/Misc Resources/grid_collision_shaper.tres" type="Shape2D" id=5]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attack"
@@ -176,7 +174,7 @@ hframes = 26
 frame = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = ExtResource( 5 )
 
 [node name="MoveRay" type="RayCast2D" parent="."]
 enabled = true
@@ -190,6 +188,7 @@ position = Vector2( 0, 8 )
 
 [node name="StepSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = 10.0
 
 [node name="ImpactSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

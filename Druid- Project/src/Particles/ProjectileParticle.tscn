@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Assets/Glowing Ball.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/Glowing Ball.png" type="Texture" id=1]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.00282486, 0.2, 0.4, 0.6, 0.8, 1 )

@@ -2,4 +2,7 @@
 
 [ext_resource path="res://src/Projectiles/BaseProjectile.tscn" type="PackedScene" id=2]
 
-[node name="NeutralProjectile" instance=ExtResource( 2 )]
+[node name="NeutralProjectile" groups=[
+"Player",
+] instance=ExtResource( 2 )]
+collision_layer = 8

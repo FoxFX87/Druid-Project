@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Glowing Ball.png-fe6ec04c225ab49b2f8ac59cfc5f842f.stex"
+path="res://.import/spr_hit_effect.png-fb0219d59e8140b6edfabc86fce83820.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Glowing Ball.png"
-dest_files=[ "res://.import/Glowing Ball.png-fe6ec04c225ab49b2f8ac59cfc5f842f.stex" ]
+source_file="res://Assets/Images/spr_hit_effect.png"
+dest_files=[ "res://.import/spr_hit_effect.png-fb0219d59e8140b6edfabc86fce83820.stex" ]
 
 [params]
 

@@ -27,8 +27,12 @@ var push_target : PushObject
 var push_vector : Vector2 setget _set_push_vector
 
 func _ready():
+	MainInstances.player = self
 	_start_grid_position()
 	_transition_to_state(STATE.MOVE)
+	
+func _exit_tree():
+	MainInstances.player = null
 
 func _process(_delta):
 	

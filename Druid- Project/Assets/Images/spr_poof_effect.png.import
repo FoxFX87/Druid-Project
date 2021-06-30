@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spr_druid_005.png-7cc8f89a1943393729dd9ad5651f3001.stex"
+path="res://.import/spr_poof_effect.png-70ac66152a986d8a1e448ae488474d90.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/spr_druid_005.png"
-dest_files=[ "res://.import/spr_druid_005.png-7cc8f89a1943393729dd9ad5651f3001.stex" ]
+source_file="res://Assets/Images/spr_poof_effect.png"
+dest_files=[ "res://.import/spr_poof_effect.png-70ac66152a986d8a1e448ae488474d90.stex" ]
 
 [params]
 
