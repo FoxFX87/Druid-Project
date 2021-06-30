@@ -88,6 +88,20 @@ tracks/1/keys = {
 } ],
 "times": PoolRealArray( 0.1 )
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_create_dust"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.1
@@ -159,7 +173,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 26
-frame = 21
+frame = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -168,6 +182,9 @@ shape = SubResource( 1 )
 enabled = true
 cast_to = Vector2( 0, 16 )
 collide_with_areas = true
+
+[node name="DustPosition" type="Node2D" parent="."]
+position = Vector2( 0, 8 )
 
 [node name="TweenMove" type="Tween" parent="."]
 

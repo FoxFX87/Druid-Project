@@ -8,5 +8,6 @@ onready var PROJECTILES = {
 }
 
 onready var EFFECTS = {
-	"hit"		:	preload("res://src/Animated Effects/HitEffect.tscn")
+	"hit"		:	preload("res://src/Animated Effects/HitEffect.tscn"),
+	"dust"		:	preload("res://src/Animated Effects/DustEffect.tscn")
 }

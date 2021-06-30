@@ -16,6 +16,7 @@ export var tile_move_speed : float = 6.0
 
 onready var sprite = $Sprite
 onready var move_ray = $MoveRay
+onready var dust_pos = $DustPosition
 onready var tween_move = $TweenMove
 onready var anim = $AnimationPlayer
 onready var current_projectile = PreloadedScenes.PROJECTILES["neutral"]
@@ -145,6 +146,13 @@ func _push_block_toward():
 
 func _transition_to_start():
 	_transition_to_state(STATE.MOVE)
+	
+func _create_dust():
+	var dust_location : Vector2 = dust_pos.global_position
+	dust_location.x += rand_range(-4, 4)
+	var d = PreloadedScenes.EFFECTS["dust"].instance()
+	d.position = dust_location
+	get_parent().add_child(d)
 
 func _on_TweenMove_tween_all_completed():
 	_get_floor_name()
