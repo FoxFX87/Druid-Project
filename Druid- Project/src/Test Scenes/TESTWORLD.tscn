@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/TileMap Scene/SolidTileMap.tscn" type="PackedScene" id=2]
@@ -8,8 +8,10 @@
 [ext_resource path="res://src/UI Scenes/UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Enemies/Fiend001.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Enemies/EnemyTracker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Test Scenes/TESTWORLD.gd" type="Script" id=9]
 
 [node name="TESTWORLD" type="Node2D"]
+script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 104, 88 )
@@ -43,3 +45,5 @@ position = Vector2( 200, 56 )
 
 [node name="Fiend002" parent="EnemyTracker" instance=ExtResource( 7 )]
 position = Vector2( 168, 104 )
+
+[connection signal="_all_enemies_defeated" from="EnemyTracker" to="." method="_on_EnemyTracker__all_enemies_defeated"]
