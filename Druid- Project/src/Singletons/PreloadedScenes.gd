@@ -6,3 +6,7 @@ onready var PROJECTILES = {
 	"green"		:	preload("res://src/Projectiles/GreenProjectile.tscn"),
 	"neutral"	:	preload("res://src/Projectiles/NeutralProjectile.tscn")
 }
+
+onready var EFFECTS = {
+	"hit"		:	preload("res://src/Animated Effects/HitEffect.tscn")
+}

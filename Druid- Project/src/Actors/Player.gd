@@ -139,6 +139,9 @@ func _attack_in_direction():
 
 func _push_block_toward():
 	push_target.push_to(push_vector)
+	var e = PreloadedScenes.EFFECTS["hit"].instance()
+	e.position = (push_target.global_position + global_position)/2
+	get_parent().add_child(e)
 
 func _transition_to_start():
 	_transition_to_state(STATE.MOVE)

@@ -4,6 +4,7 @@ class_name PushObject
 const cell_size = 16
 
 onready var move_ray = $MoveRay
+onready var audio = $StoneMovingSFX
 
 var move_vector
 
@@ -20,4 +21,5 @@ func push_to(dir):
 	update_ray(dir)
 	
 	if not move_ray.is_colliding():
+		audio.play(0.975)
 		position += dir * cell_size
