@@ -1,5 +1,7 @@
 extends Area2D
 
+signal _died
+
 var target
 
 onready var sprite = $Sprite
@@ -22,4 +24,5 @@ func _death():
 	var p = PreloadedScenes.EFFECTS["poof"].instance()
 	p.position = global_position
 	get_parent().add_child(p)
+	emit_signal("_died")
 	queue_free()

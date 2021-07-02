@@ -1,8 +1,41 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Theme Resources/UI_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/UI Scenes/UI.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Init"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, 8 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "PopAway"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.435275, 1 ),
+"update": 0,
+"values": [ Vector2( 8, 8 ), Vector2( -100, 8 ) ]
+}
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -40,3 +73,45 @@ margin_top = 11.0
 margin_right = 222.0
 margin_bottom = 17.0
 text = "(R) RESTART "
+
+[node name="ObjectiveRect" type="ColorRect" parent="Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -82.0
+margin_right = 94.0
+margin_bottom = -49.0
+color = Color( 0.160784, 0.160784, 0.160784, 0.670588 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ObjectiveRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -10.0
+margin_right = 36.0
+margin_bottom = 10.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FissureLabel" type="Label" parent="Control/ObjectiveRect/VBoxContainer"]
+margin_right = 72.0
+margin_bottom = 6.0
+text = "Fissures Sealed : 0"
+
+[node name="EnemyLabel" type="Label" parent="Control/ObjectiveRect/VBoxContainer"]
+margin_top = 14.0
+margin_right = 72.0
+margin_bottom = 20.0
+text = "Enemies Left : 0"
+
+[node name="ObjectiveAnimation" type="AnimationPlayer" parent="Control/ObjectiveRect"]
+autoplay = "Init"
+anims/Init = SubResource( 2 )
+anims/PopAway = SubResource( 1 )

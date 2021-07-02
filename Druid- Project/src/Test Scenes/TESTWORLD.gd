@@ -1,4 +1,36 @@
 extends Node2D
 
-func _on_EnemyTracker__all_enemies_defeated():
-	var _reset_scene = get_tree().reload_current_scene()
+onready var fissures = $Fissures
+onready var enemies = $EnemyTracker
+onready var ui = $UI
+
+var unsealed_count 
+var enemy_count
+
+func _ready():
+	
+	unsealed_count = fissures.get_child_count()
+	enemy_count = enemies.get_child_count()
+	ui._set_display_fissure(unsealed_count)
+	ui._set_display_enemies(enemies.enemy_count)
+	
+	for fissure in fissures.get_children():
+		fissure.connect("_fissure_sealed", self, "_check_fissures")
+		
+	for enemy in enemies.get_children():
+		enemy.connect("_died", self, "_check_enemies")
+		
+		
+func _check_fissures():
+	unsealed_count -= 1
+	ui._set_display_fissure(unsealed_count)
+	_check_level_complete()
+
+func _check_enemies():
+	enemy_count -= 1
+	ui._set_display_enemies(enemy_count)
+	_check_level_complete()
+
+func _check_level_complete():
+	if unsealed_count == 0 and enemy_count == 0:
+		ui._clear_objective_ui()

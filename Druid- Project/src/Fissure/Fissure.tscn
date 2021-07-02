@@ -21,7 +21,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[node name="Fissure" type="Area2D"]
+[node name="Fissure" type="Area2D" groups=[
+"fissure",
+]]
 z_index = -1
 collision_layer = 0
 script = ExtResource( 3 )
