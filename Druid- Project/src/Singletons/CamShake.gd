@@ -9,7 +9,7 @@ func _shake(shake_intensity, shake_duration):
 		cam_shake_duration = shake_duration
 		
 func _process(delta):
-	var camera: Camera2D = get_tree().current_scene.get_node("LargeSceneCamera")
+	var camera: Camera2D = get_tree().current_scene.get_node("Camera2D")
 	
 	if cam_shake_duration <= 0:
 		camera.offset = Vector2.ZERO

@@ -4,3 +4,4 @@
 
 [node name="RedProjectile" instance=ExtResource( 1 )]
 modulate = Color( 1, 0.329412, 0.329412, 1 )
+attack_type = 1

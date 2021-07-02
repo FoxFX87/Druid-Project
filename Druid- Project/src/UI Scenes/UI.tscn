@@ -21,14 +21,22 @@ margin_left = -160.0
 margin_top = -20.0
 margin_right = 160.0
 margin_bottom = 8.0
+custom_constants/separation = 32
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AttackInfoLabel" type="Label" parent="Control/InfoContainer"]
-margin_left = 138.0
+margin_left = 98.0
 margin_top = 11.0
-margin_right = 182.0
+margin_right = 142.0
 margin_bottom = 17.0
 text = "(Z) ATTACK "
+
+[node name="ResetInfoLabel" type="Label" parent="Control/InfoContainer"]
+margin_left = 174.0
+margin_top = 11.0
+margin_right = 222.0
+margin_bottom = 17.0
+text = "(R) RESTART "

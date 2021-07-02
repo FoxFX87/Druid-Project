@@ -1,7 +1,10 @@
 extends Area2D
 class_name Projectile
 
+enum TYPE {CLEAR, RED, BLUE}
+
 export (int) var speed = 200
+export (TYPE) var attack_type = TYPE.CLEAR
 var direction : Vector2 setget _set_direction
 
 onready var part = $ProjectileParticle/AnimationPlayer
