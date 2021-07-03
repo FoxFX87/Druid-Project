@@ -12,3 +12,9 @@ func _set_display_enemies(value : int):
 
 func _clear_objective_ui():
 	objective_anim.play("PopAway")
+
+func _destroy_fissure_ui():
+	fissure_label.queue_free()
+	
+func _destroy_enemy_ui():
+	enemy_label.queue_free()

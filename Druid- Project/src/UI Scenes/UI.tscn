@@ -96,6 +96,7 @@ margin_top = -10.0
 margin_right = 36.0
 margin_bottom = 10.0
 custom_constants/separation = 8
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

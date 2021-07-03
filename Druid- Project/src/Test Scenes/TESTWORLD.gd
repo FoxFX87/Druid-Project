@@ -11,14 +11,22 @@ func _ready():
 	
 	unsealed_count = fissures.get_child_count()
 	enemy_count = enemies.get_child_count()
-	ui._set_display_fissure(unsealed_count)
-	ui._set_display_enemies(enemies.enemy_count)
 	
-	for fissure in fissures.get_children():
-		fissure.connect("_fissure_sealed", self, "_check_fissures")
+	
+	
+	if unsealed_count != 0:
+		ui._set_display_fissure(unsealed_count)
+		for fissure in fissures.get_children():
+			fissure.connect("_fissure_sealed", self, "_check_fissures")
+	else:
+		ui._destroy_fissure_ui()
 		
-	for enemy in enemies.get_children():
-		enemy.connect("_died", self, "_check_enemies")
+	if enemy_count != 0:
+		ui._set_display_enemies(enemies.enemy_count)
+		for enemy in enemies.get_children():
+			enemy.connect("_died", self, "_check_enemies")
+	else:
+		ui._destroy_enemy_ui()
 		
 		
 func _check_fissures():
