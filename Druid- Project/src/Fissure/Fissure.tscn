@@ -25,7 +25,7 @@ tracks/0/keys = {
 "fissure",
 ]]
 z_index = -1
-collision_layer = 0
+collision_layer = 16
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

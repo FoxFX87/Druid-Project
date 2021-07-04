@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Test Scenes/BaseStageTEST.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Fissure/Fissure.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Actors/PushableStone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Test Scenes/Stages/StageThree.tscn" type="PackedScene" id=4]
+
+[node name="StageTwo" instance=ExtResource( 1 )]
+next_stage = ExtResource( 4 )
+
+[node name="Player" parent="." index="0"]
+position = Vector2( 264, 40 )
+
+[node name="SolidTileMap" parent="." index="1"]
+tile_data = PoolIntArray( 65544, 0, 131072, 65545, 0, 65536, 65546, 0, 131072, 65547, 0, 65536, 65548, 0, 0, 65549, 0, 131072, 65550, 0, 131072, 65551, 0, 0, 65552, 0, 131072, 65553, 0, 131072, 131080, 0, 65536, 131089, 0, 0, 196616, 0, 65536, 196622, 0, 65536, 196625, 0, 65536, 262152, 0, 65536, 262155, 0, 65536, 262156, 0, 0, 262158, 0, 65536, 262161, 0, 65536, 327688, 0, 131072, 327691, 0, 65536, 327692, 0, 131072, 327694, 0, 131072, 327695, 0, 0, 327697, 0, 65536, 393224, 0, 65536, 393227, 0, 0, 393233, 0, 65536, 458760, 0, 0, 458761, 0, 0, 458762, 0, 65536, 458763, 0, 131072, 458764, 0, 0, 458765, 0, 131072, 458766, 0, 0, 458767, 0, 0, 458768, 0, 65536, 458769, 0, 65536 )
+
+[node name="FloorTileMap" parent="." index="2"]
+tile_data = PoolIntArray( 131081, 0, 196608, 131082, 0, 196608, 131083, 0, 196608, 131084, 0, 131072, 131085, 0, 196608, 131086, 0, 196608, 131087, 0, 196608, 131088, 0, 196608, 196617, 0, 0, 196618, 0, 196608, 196619, 0, 196608, 196620, 0, 196608, 196621, 0, 196608, 196623, 0, 196608, 196624, 0, 196608, 262153, 0, 196608, 262154, 0, 196608, 262157, 0, 196608, 262159, 0, 196608, 262160, 0, 196608, 327689, 0, 196608, 327690, 0, 196608, 327693, 0, 196608, 327696, 0, 0, 393225, 0, 196608, 393226, 0, 131072, 393228, 0, 131072, 393229, 0, 196608, 393230, 0, 0, 393231, 0, 196608, 393232, 0, 196608 )
+
+[node name="Fissure" parent="Fissures" index="0" instance=ExtResource( 2 )]
+position = Vector2( 200, 40 )
+
+[node name="Fissure2" parent="Fissures" index="1" instance=ExtResource( 2 )]
+position = Vector2( 152, 56 )
+
+[node name="PushableStone" parent="PushableStones" index="0" instance=ExtResource( 3 )]
+position = Vector2( 152, 88 )
+
+[node name="PushableStone2" parent="PushableStones" index="1" instance=ExtResource( 3 )]
+position = Vector2( 216, 88 )
+
+[node name="PushableStone3" parent="PushableStones" index="2" instance=ExtResource( 3 )]
+position = Vector2( 232, 104 )

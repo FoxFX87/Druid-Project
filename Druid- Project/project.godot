@@ -33,13 +33,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Druid- Project"
-run/main_scene="res://src/Test Scenes/TESTWORLD.tscn"
+run/main_scene="res://src/Test Scenes/Stages/StageOne.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 PreloadedScenes="*res://src/Singletons/PreloadedScenes.gd"
-CamShake="*res://src/Singletons/CamShake.gd"
 MainInstances="*res://src/Singletons/MainInstances.gd"
 
 [display]
@@ -88,6 +87,7 @@ in_attack={
 2d_physics/layer_2="Special Floors"
 2d_physics/layer_3="Pickup"
 2d_physics/layer_4="Projectiles"
+2d_physics/layer_5="Fissures"
 
 [physics]
 
@@ -95,5 +95,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.313726, 0.313726, 0.313726, 1 )
+environment/default_clear_color=Color( 0.211765, 0.211765, 0.211765, 1 )
 environment/default_environment="res://default_env.tres"

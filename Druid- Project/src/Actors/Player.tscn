@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Audio/impact_on_block.ogg" type="AudioStream" id=4]
 [ext_resource path="res://src/Misc Resources/grid_collision_shaper.tres" type="Shape2D" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Attack"
 length = 0.4
 step = 0.05
@@ -40,7 +40,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Move"
 length = 0.3
 step = 0.05
@@ -101,7 +101,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.2
 step = 0.025
 tracks/0/type = "value"
@@ -179,6 +179,7 @@ shape = ExtResource( 5 )
 [node name="MoveRay" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 16 )
+collision_mask = 17
 collide_with_areas = true
 
 [node name="DustPosition" type="Node2D" parent="."]
@@ -195,10 +196,10 @@ stream = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Attack = SubResource( 2 )
-anims/Idle = SubResource( 3 )
-anims/Move = SubResource( 4 )
-"anims/Prepare Attack" = SubResource( 5 )
-anims/Push = SubResource( 6 )
+anims/Attack = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Move = SubResource( 3 )
+"anims/Prepare Attack" = SubResource( 4 )
+anims/Push = SubResource( 5 )
 
 [connection signal="tween_all_completed" from="TweenMove" to="." method="_on_TweenMove_tween_all_completed"]
