@@ -23,7 +23,7 @@ func _ready():
 		ui._destroy_fissure_ui()
 		
 	if enemy_count != 0:
-		ui._set_display_enemies(enemies.enemy_count)
+		ui._set_display_enemies(enemy_count)
 		for enemy in enemies.get_children():
 			enemy.connect("_died", self, "_check_enemies")
 	else:
