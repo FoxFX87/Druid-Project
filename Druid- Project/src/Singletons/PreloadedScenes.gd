@@ -11,5 +11,6 @@ onready var EFFECTS = {
 	"hit"				:	preload("res://src/Animated Effects/HitEffect.tscn"),
 	"dust"				:	preload("res://src/Animated Effects/DustEffect.tscn"),
 	"poof"				:	preload("res://src/Animated Effects/PoofEffect.tscn"),
-	"fissure collapse"	:	preload("res://src/Animated Effects/FissureCollapse.tscn")
+	"fissure collapse"	:	preload("res://src/Animated Effects/FissureCollapse.tscn"),
+	"blast"				:	preload("res://src/Animated Effects/BlastEffect.tscn")
 }

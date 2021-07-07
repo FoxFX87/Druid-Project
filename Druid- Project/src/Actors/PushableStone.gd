@@ -51,5 +51,3 @@ func _create_dust():
 	var d = PreloadedScenes.EFFECTS["dust"].instance()
 	d.position = dust_location
 	get_parent().add_child(d)
-
-

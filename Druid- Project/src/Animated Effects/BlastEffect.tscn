@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Images/spr_dust_effect.png" type="Texture" id=1]
-[ext_resource path="res://src/Animated Effects/DustEffect.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Images/spr_blast_effect.png" type="Texture" id=1]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Effect"
-length = 0.3
+resource_name = "New Anim"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -13,10 +12,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -25,7 +24,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -33,14 +32,15 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="DustEffect" type="Node2D"]
-script = ExtResource( 2 )
+[node name="BlastEffect" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 3
-frame = 2
+offset = Vector2( 0, -8 )
+hframes = 4
+frame = 3
 
-[node name="Effect" type="AnimationPlayer" parent="."]
-autoplay = "Effect"
-anims/Effect = SubResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+playback_speed = 3.0
+"anims/New Anim" = SubResource( 1 )

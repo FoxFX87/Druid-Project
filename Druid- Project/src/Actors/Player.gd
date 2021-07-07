@@ -1,5 +1,5 @@
 extends Area2D
-class_name player
+class_name Player
 
 const CELL_SIZE = 16
 
@@ -139,7 +139,7 @@ func _get_floor_name():
 func _attack_in_direction():
 	var p : Projectile = current_projectile.instance()
 	p.direction = move_vector
-	p.position = global_position
+	p.position = global_position + move_ray.cast_to/4
 	get_parent().add_child(p)
 
 func _push_block_toward():
@@ -161,3 +161,8 @@ func _create_dust():
 func _on_TweenMove_tween_all_completed():
 	_get_floor_name()
 
+func _create_blast_effect():
+	var e = PreloadedScenes.EFFECTS["blast"].instance()
+	e.position = global_position + move_ray.cast_to * 0.1
+	e.rotation_degrees = rad2deg(move_vector.angle()) + 90
+	get_parent().add_child(e)
