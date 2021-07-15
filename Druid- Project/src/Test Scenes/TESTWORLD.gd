@@ -10,6 +10,10 @@ export (PackedScene) var next_stage
 var unsealed_count 
 var enemy_count
 
+func _input(event):
+	if event.is_action_pressed("in reset"):
+		var _reset_scene = get_tree().reload_current_scene()
+
 func _ready():
 	
 	unsealed_count = fissures.get_child_count()
