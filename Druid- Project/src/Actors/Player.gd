@@ -3,6 +3,12 @@ class_name Player
 
 const CELL_SIZE = 16
 
+const TILE_ID = {
+	"BLUE"	: 1,
+	"RED"	: 2,
+	"GREEN"	: 3
+}
+
 enum STATE {MOVE, PUSH, PREPARE_ATTACK, ATTACK}
 
 var inputs = {
@@ -65,6 +71,9 @@ func _process(_delta):
 				
 			if Input.is_action_just_pressed("in_attack"):
 				_transition_to_state(STATE.PREPARE_ATTACK)
+				
+			if Input.is_action_just_pressed("in change floor"):
+				_test_change_floor()
 				
 		STATE.PUSH:
 			var _anim = anim.play("Push")
@@ -135,6 +144,18 @@ func _get_floor_name():
 					current_projectile = PreloadedScenes.PROJECTILES["green"]
 					return
 	current_projectile = PreloadedScenes.PROJECTILES["neutral"]
+
+func _test_change_floor():
+	#	1 : BLUE
+	#	2 : RED
+	#	3 : GREEN
+	for b in get_overlapping_bodies():
+		if b is TileMap:
+			var tile_pos = b.world_to_map(position)
+			var _tile_id = b.get_cellv(tile_pos)
+			
+			# Change Tile
+			b.set_cellv(tile_pos, TILE_ID["RED"])
 
 func _attack_in_direction():
 	var p : Projectile = current_projectile.instance()
