@@ -3,13 +3,7 @@ class_name Player
 
 const CELL_SIZE = 16
 
-const TILE_ID = {
-	"BLUE"	: 1,
-	"RED"	: 2,
-	"GREEN"	: 3
-}
-
-enum STATE {MOVE, PUSH, PREPARE_ATTACK, ATTACK}
+enum STATE {MOVE, PUSH, PREPARE_ATTACK, ATTACK, PLANT}
 
 var inputs = {
 	"ui_right" : Vector2.RIGHT,
@@ -31,6 +25,7 @@ var current_state
 var move_vector : Vector2 setget _set_move_vector
 var push_target : PushObject
 var push_vector : Vector2 setget _set_push_vector
+var current_seed = MainInstances.plant_seed
 
 func _ready():
 	MainInstances.player = self
@@ -72,8 +67,9 @@ func _process(_delta):
 			if Input.is_action_just_pressed("in_attack"):
 				_transition_to_state(STATE.PREPARE_ATTACK)
 				
-			if Input.is_action_just_pressed("in change floor"):
-				_test_change_floor()
+			if current_seed != null:
+				if Input.is_action_just_pressed("in change floor"):
+					_transition_to_state(STATE.PLANT)
 				
 		STATE.PUSH:
 			var _anim = anim.play("Push")
@@ -93,6 +89,9 @@ func _process(_delta):
 			
 		STATE.ATTACK:
 			var _anim = anim.play("Attack")
+			
+		STATE.PLANT:
+			var _anim = anim.play("Plant")
 	
 func _set_move_vector(_vec : Vector2):
 	move_vector = _vec
@@ -145,18 +144,6 @@ func _get_floor_name():
 					return
 	current_projectile = PreloadedScenes.PROJECTILES["neutral"]
 
-func _test_change_floor():
-	#	1 : BLUE
-	#	2 : RED
-	#	3 : GREEN
-	for b in get_overlapping_bodies():
-		if b is TileMap:
-			var tile_pos = b.world_to_map(position)
-			var _tile_id = b.get_cellv(tile_pos)
-			
-			# Change Tile
-			b.set_cellv(tile_pos, TILE_ID["RED"])
-
 func _attack_in_direction():
 	var p : Projectile = current_projectile.instance()
 	p.direction = move_vector
@@ -187,3 +174,6 @@ func _create_blast_effect():
 	e.position = global_position + move_ray.cast_to * 0.1
 	e.rotation_degrees = rad2deg(move_vector.angle()) + 90
 	get_parent().add_child(e)
+
+func _on_SeedEffect_floors_changed():
+	_get_floor_name()
