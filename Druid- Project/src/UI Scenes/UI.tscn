@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Theme Resources/UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/UI Scenes/UI.gd" type="Script" id=2]
+[ext_resource path="res://src/UI Scenes/SeedRect.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Init"
@@ -18,18 +19,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 8, 8 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("../SeedRect:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 100, 8 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -43,18 +32,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 0.435275, 1 ),
 "update": 0,
 "values": [ Vector2( 8, 8 ), Vector2( -150, 8 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../SeedRect:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 100, 8 ), Vector2( -52, 8 ) ]
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -100,9 +77,9 @@ text = "(R) RESTART "
 [node name="ObjectiveRect" type="ColorRect" parent="Control"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
+margin_left = 8.0
 margin_top = -82.0
-margin_right = -64.0
+margin_right = 94.0
 margin_bottom = -49.0
 color = Color( 0.160784, 0.160784, 0.160784, 0.670588 )
 __meta__ = {
@@ -143,11 +120,12 @@ anims/PopAway = SubResource( 2 )
 [node name="SeedRect" type="ColorRect" parent="Control"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -52.0
+margin_left = 294.0
 margin_top = -82.0
-margin_right = -29.0
-margin_bottom = -59.0
+margin_right = 312.0
+margin_bottom = -64.0
 color = Color( 0.160784, 0.160784, 0.160784, 0.670588 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -156,12 +134,27 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="Control/SeedRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/SeedRect/CenterContainer"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 9.0
+margin_bottom = 9.0
 
 [node name="Label" type="Label" parent="Control/SeedRect"]
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = 3.0
-margin_bottom = 9.0
-text = "SEED"
+margin_left = -10.0
+margin_top = 2.0
+margin_right = 10.0
+margin_bottom = 8.0
+text = "SPACE"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

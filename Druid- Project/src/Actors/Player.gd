@@ -25,7 +25,6 @@ var current_state
 var move_vector : Vector2 setget _set_move_vector
 var push_target : PushObject
 var push_vector : Vector2 setget _set_push_vector
-var current_seed = MainInstances.plant_seed
 
 func _ready():
 	MainInstances.player = self
@@ -67,7 +66,7 @@ func _process(_delta):
 			if Input.is_action_just_pressed("in_attack"):
 				_transition_to_state(STATE.PREPARE_ATTACK)
 				
-			if current_seed != null:
+			if MainInstances.plant_seed != null:
 				if Input.is_action_just_pressed("in change floor"):
 					_transition_to_state(STATE.PLANT)
 				

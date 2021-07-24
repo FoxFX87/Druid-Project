@@ -14,3 +14,7 @@ onready var EFFECTS = {
 	"fissure collapse"	:	preload("res://src/Animated Effects/FissureCollapse.tscn"),
 	"blast"				:	preload("res://src/Animated Effects/BlastEffect.tscn")
 }
+
+onready var IMAGES = {
+	"red seed"			: preload("res://Assets/Images/spr_red_seed_001.png")
+}
