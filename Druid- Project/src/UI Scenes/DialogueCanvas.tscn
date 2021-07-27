@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Theme Resources/UI_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/UI Scenes/DialogueManager.gd" type="Script" id=2]
+
+[node name="DialogueCanvas" type="CanvasLayer"]
+layer = 4
+
+[node name="DialogueManager" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dialogue_path = "res://src/JSON/"
+
+[node name="Popup" type="Popup" parent="DialogueManager"]
+visible = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueColorRect" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.160784, 0.160784, 0.160784, 0.670588 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CharacterName" type="Label" parent="DialogueManager/Popup"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 7.0
+margin_right = -8.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.431373, 1, 0, 1 )
+text = "TITANIA"
+
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueManager/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -8.0
+margin_bottom = -12.0
+custom_constants/table_vseparation = 0
+text = "USE THE FLOORS...DRAW POWER FROM THEM..."
+scroll_active = false
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="DialogueManager/Popup"]
