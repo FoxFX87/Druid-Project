@@ -1,10 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Theme Resources/UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/UI Scenes/DialogueManager.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Images/spr_titania_large.png" type="Texture" id=3]
 
 [node name="DialogueCanvas" type="CanvasLayer"]
 layer = 4
+
+[node name="CharacterManager" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CharacterManager"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="CharacterManager/CenterContainer"]
+margin_left = 80.0
+margin_top = 10.0
+margin_right = 240.0
+margin_bottom = 170.0
+texture = ExtResource( 3 )
 
 [node name="DialogueManager" type="Control" parent="."]
 anchor_top = 1.0

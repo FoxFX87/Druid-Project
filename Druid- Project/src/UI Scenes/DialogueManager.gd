@@ -13,8 +13,9 @@ onready var timer = $Popup/Timer
 
 func _ready():
 	timer.wait_time = text_speed
-	dialogue = getDialog()
-	assert(dialogue, "Dialog not found")
+	popup.popup()
+	#dialogue = getDialog()
+	#assert(dialogue, "Dialog not found")
 	
 func _process(_delta):
 	pass
