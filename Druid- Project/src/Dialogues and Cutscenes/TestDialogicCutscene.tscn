@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Dialogues and Cutscenes/TestDialogicCutscene.gd" type="Script" id=1]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Transitions/TransitionScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Test Scenes/Stages/StageOne.tscn" type="PackedScene" id=4]
 
-[node name="TestDialogicCutscene" type="Node2D"]
+[node name="TestDialogicCutscene" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_stage = ExtResource( 4 )
 
 [node name="DialogNode" parent="." instance=ExtResource( 2 )]
 timeline = "timeline-1627503859.json"
+
+[node name="TransitionScene" parent="." instance=ExtResource( 3 )]
 
 [connection signal="timeline_end" from="DialogNode" to="." method="_on_DialogNode_timeline_end"]
