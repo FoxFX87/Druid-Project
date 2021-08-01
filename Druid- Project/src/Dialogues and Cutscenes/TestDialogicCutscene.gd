@@ -5,8 +5,10 @@ export (PackedScene) var next_stage
 onready var trans = $TransitionScene
 
 func _ready():
-	pass
+	var dialog = Dialogic.start('TESTTimeline', false)
+	add_child(dialog)
+	dialog.connect("timeline_end", self, "_to_next_scene")
 
-func _on_DialogNode_timeline_end(_timeline_name):
+func _to_next_scene(_timeline_name):
 	if next_stage != null:
 		trans.change_scene(next_stage)
