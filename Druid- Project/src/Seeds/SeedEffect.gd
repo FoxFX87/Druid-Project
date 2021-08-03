@@ -11,7 +11,13 @@ func _change_floors():
 		for l in s.get_overlapping_bodies():
 			if l is TileMap:
 				var tile_pos = l.world_to_map(s.global_position)
-				l.set_cellv(tile_pos, 2)
+				var flr = MainInstances.plant_seed
+				
+				match flr:
+					1:
+						l.set_cellv(tile_pos, 1)
+					0:
+						l.set_cellv(tile_pos, 2)
 			else:
 				return
 	MainInstances.plant_seed = null

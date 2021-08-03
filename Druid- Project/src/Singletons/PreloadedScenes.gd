@@ -16,5 +16,6 @@ onready var EFFECTS = {
 }
 
 onready var IMAGES = {
-	"red seed"			: preload("res://Assets/Images/spr_red_seed_001.png")
+	"red seed"			: preload("res://Assets/Images/spr_red_seed_001.png"),
+	"blue seed"			: preload("res://Assets/Images/spr_blue_seed_001.png")
 }

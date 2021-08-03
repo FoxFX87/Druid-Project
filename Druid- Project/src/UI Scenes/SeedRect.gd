@@ -8,7 +8,12 @@ func _ready():
 func _set_texture(value):
 	
 	if value != null:
-		texture.texture = PreloadedScenes.IMAGES["red seed"]
-		print("Image set")
+		
+		match value:
+			MainInstances.SEED.RED:
+				texture.texture = PreloadedScenes.IMAGES["red seed"]
+			MainInstances.SEED.BLUE:
+				texture.texture = PreloadedScenes.IMAGES["blue seed"]
+		
 	else:
 		texture.texture = null
