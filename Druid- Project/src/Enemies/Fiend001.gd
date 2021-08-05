@@ -15,9 +15,10 @@ func _process(_delta):
 		if target.position.x != position.x:
 			sprite.flip_h = target.position.x < position.x
 
-func _on_Fiend001_area_entered(area : Area2D):
-	if area.is_in_group("Player"):
-		_death()
+func _on_Fiend001_area_entered(_area : Area2D):
+	_death()
+#	if area.is_in_group("Player"):
+#		_death()
 
 func _death():
 	target = null

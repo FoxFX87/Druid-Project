@@ -4,6 +4,8 @@ signal _died
 
 var target
 
+export (Projectile.TYPE) var vulnerability 
+
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
@@ -25,7 +27,7 @@ func _death():
 	queue_free()
 
 func _on_Fiend002_area_entered(area : Projectile):
-	if area.attack_type == area.TYPE.RED:
+	if area.attack_type == vulnerability:
 		_death()
 	else:
 		anim.play("React")

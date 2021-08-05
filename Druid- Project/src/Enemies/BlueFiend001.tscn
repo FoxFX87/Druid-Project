@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Misc Resources/grid_collision_shaper.tres" type="Shape2D" id=1]
-[ext_resource path="res://Assets/Images/spr_fiend_002.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/spr_fiend_003.png" type="Texture" id=2]
 [ext_resource path="res://src/Enemies/RedFiend001.gd" type="Script" id=3]
 [ext_resource path="res://src/Shaders/FlashShader.tres" type="Material" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
-length = 0.4
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -64,15 +64,15 @@ tracks/2/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
-[node name="RedFiend001" type="Area2D"]
+[node name="BlueFiend001" type="Area2D"]
 collision_mask = 9
 script = ExtResource( 3 )
-vulnerability = 1
+vulnerability = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 4 )
 texture = ExtResource( 2 )
-hframes = 10
+hframes = 12
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
