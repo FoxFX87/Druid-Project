@@ -73,7 +73,7 @@ vulnerability = 1
 material = ExtResource( 4 )
 texture = ExtResource( 2 )
 hframes = 10
-frame = 3
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

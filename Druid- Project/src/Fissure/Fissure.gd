@@ -1,4 +1,5 @@
 extends Area2D
+class_name Fissure
 
 signal _fissure_sealed
 

@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 
 [node name="SeedLocation001" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeedLocation001"]
 shape = SubResource( 1 )
@@ -18,7 +18,7 @@ shape = SubResource( 1 )
 [node name="SeedLocation002" type="Area2D" parent="."]
 position = Vector2( 16, 0 )
 collision_layer = 0
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeedLocation002"]
 shape = SubResource( 1 )
@@ -26,7 +26,7 @@ shape = SubResource( 1 )
 [node name="SeedLocation003" type="Area2D" parent="."]
 position = Vector2( -16, 0 )
 collision_layer = 0
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeedLocation003"]
 shape = SubResource( 1 )
@@ -34,7 +34,7 @@ shape = SubResource( 1 )
 [node name="SeedLocation004" type="Area2D" parent="."]
 position = Vector2( 0, 16 )
 collision_layer = 0
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeedLocation004"]
 shape = SubResource( 1 )
@@ -42,7 +42,7 @@ shape = SubResource( 1 )
 [node name="SeedLocation005" type="Area2D" parent="."]
 position = Vector2( 0, -16 )
 collision_layer = 0
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeedLocation005"]
 shape = SubResource( 1 )

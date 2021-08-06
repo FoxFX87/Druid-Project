@@ -173,6 +173,7 @@ func _create_blast_effect():
 	e.position = global_position + move_ray.cast_to * 0.1
 	e.rotation_degrees = rad2deg(move_vector.angle()) + 90
 	get_parent().add_child(e)
+	SfxLibrary._play("Cast1")
 
 func _on_SeedEffect_floors_changed():
 	_get_floor_name()

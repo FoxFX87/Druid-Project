@@ -19,6 +19,7 @@ func _process(_delta):
 			sprite.flip_h = target.position.x < position.x
 			
 func _death():
+	SfxLibrary._play("SpellImpact")
 	target = null
 	var p = PreloadedScenes.EFFECTS["poof"].instance()
 	p.position = global_position

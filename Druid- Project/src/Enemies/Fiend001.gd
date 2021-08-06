@@ -21,6 +21,7 @@ func _on_Fiend001_area_entered(_area : Area2D):
 #		_death()
 
 func _death():
+	SfxLibrary._play("SpellImpact")
 	target = null
 	var p = PreloadedScenes.EFFECTS["poof"].instance()
 	p.position = global_position
