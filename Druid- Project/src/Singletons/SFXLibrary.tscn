@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Singletons/SFXLibrary.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/Magic Sound 96.wav" type="AudioStream" id=2]
@@ -7,6 +7,13 @@
 [ext_resource path="res://Assets/Audio/seed_pickup1.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Audio/PlantImpact.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Audio/SpellImpact.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Audio/Toggle Spell 1.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Audio/Spell Casted 1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Audio/Spell Impact 1.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Audio/Collect.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Audio/player_step.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Audio/Walk on Grass 2.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Audio/React Sound.wav" type="AudioStream" id=14]
 
 [node name="SFXLibrary" type="Node"]
 script = ExtResource( 1 )
@@ -26,5 +33,26 @@ stream = ExtResource( 4 )
 [node name="PlantImpact" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
-[node name="SpellImpact" type="AudioStreamPlayer" parent="."]
+[node name="SpellImpact001" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="SpellImpact002" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="PrepareSpell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="SpellCasted" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="SeedCollected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="StepOnSolid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="StepOnColored" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="React" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )

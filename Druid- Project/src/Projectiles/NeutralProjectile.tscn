@@ -5,4 +5,7 @@
 [node name="NeutralProjectile" groups=[
 "Player",
 ] instance=ExtResource( 2 )]
-collision_layer = 8
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

@@ -7,6 +7,7 @@ extends Node2D
 signal floors_changed
 
 func _change_floors():
+	SfxLibrary._play("PlantImpact")
 	for s in get_children():
 		
 		for a in s.get_overlapping_areas():
@@ -28,6 +29,7 @@ func _change_floors():
 				return
 	MainInstances.plant_seed = null
 	emit_signal("floors_changed")
+	
 
 func _toggle_areas():
 	for area in get_children():

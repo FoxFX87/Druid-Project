@@ -19,7 +19,7 @@ func _process(_delta):
 			sprite.flip_h = target.position.x < position.x
 			
 func _death():
-	SfxLibrary._play("SpellImpact")
+	SfxLibrary._play("SpellImpact001")
 	target = null
 	var p = PreloadedScenes.EFFECTS["poof"].instance()
 	p.position = global_position
@@ -31,4 +31,5 @@ func _on_Fiend002_area_entered(area : Projectile):
 	if area.attack_type == vulnerability:
 		_death()
 	else:
+		SfxLibrary._play("React")
 		anim.play("React")

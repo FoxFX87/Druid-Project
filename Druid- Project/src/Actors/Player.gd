@@ -64,6 +64,7 @@ func _process(_delta):
 							_transition_to_state(STATE.PUSH)
 				
 			if Input.is_action_just_pressed("in_attack"):
+				SfxLibrary._play("PrepareSpell")
 				_transition_to_state(STATE.PREPARE_ATTACK)
 				
 			if MainInstances.plant_seed != null:
@@ -126,6 +127,7 @@ func _set_sprite_flip(dir):
 		sprite.scale.x = inputs[dir].x
 
 func _get_floor_name():
+	
 	for b in get_overlapping_bodies():
 		if b is TileMap:
 			var tile_pos = b.world_to_map(position)
@@ -134,14 +136,18 @@ func _get_floor_name():
 			match tile_name:
 				"RedFloor":
 					current_projectile = PreloadedScenes.PROJECTILES["red"]
+					SfxLibrary._play("StepOnColored")
 					return
 				"BlueFloor":
 					current_projectile = PreloadedScenes.PROJECTILES["blue"]
+					SfxLibrary._play("StepOnColored")
 					return
 				"GreenFloor":
 					current_projectile = PreloadedScenes.PROJECTILES["green"]
+					SfxLibrary._play("StepOnColored")
 					return
 	current_projectile = PreloadedScenes.PROJECTILES["neutral"]
+	
 
 func _attack_in_direction():
 	var p : Projectile = current_projectile.instance()
@@ -173,7 +179,7 @@ func _create_blast_effect():
 	e.position = global_position + move_ray.cast_to * 0.1
 	e.rotation_degrees = rad2deg(move_vector.angle()) + 90
 	get_parent().add_child(e)
-	SfxLibrary._play("Cast1")
+	SfxLibrary._play("SpellCasted")
 
 func _on_SeedEffect_floors_changed():
 	_get_floor_name()

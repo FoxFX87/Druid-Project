@@ -15,6 +15,9 @@ func _process(delta):
 func _set_direction(dir : Vector2):
 	direction = dir
 
+func _play_sfx():
+	SfxLibrary._play("SpellImpact002")
+
 func _destroy():
 	speed = 0
 	part.play("Fade")
@@ -26,3 +29,6 @@ func _on_BaseProjectile_area_entered(_area):
 
 func _on_BaseProjectile_body_entered(_body):
 	_destroy()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
