@@ -78,6 +78,7 @@ PreloadedScenes="*res://src/Singletons/PreloadedScenes.gd"
 MainInstances="*res://src/Singletons/MainInstances.gd"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 SfxLibrary="*res://src/Singletons/SFXLibrary.tscn"
+MusicLibrary="*res://src/Singletons/MusicLibrary.tscn"
 
 [display]
 

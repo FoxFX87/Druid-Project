@@ -11,4 +11,5 @@ func _ready():
 
 func _to_next_scene(_timeline_name):
 	if next_stage != null:
+		MusicLibrary._play("MainLoop")
 		trans.change_scene(next_stage)
