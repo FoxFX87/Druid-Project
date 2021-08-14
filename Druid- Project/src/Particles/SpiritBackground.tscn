@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Particles/ParticleBackground.tscn" type="PackedScene" id=1]
+
+[node name="SpiritBackground" type="Node2D"]
+
+[node name="ParticleBackground" type="Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 200 )
+z_index = -2
+
+[node name="ParticleBackground2" type="Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 270 )

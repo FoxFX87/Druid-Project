@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Test Scenes/TESTWORLD.gd" type="Script" id=1]
 [ext_resource path="res://src/Camera/Camera2D.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/UI Scenes/UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Transitions/TransitionScene.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/UI Scenes/PauseCanvasLayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Particles/SpiritBackground.tscn" type="PackedScene" id=9]
 
 [node name="BaseStageTEST" type="Node2D"]
 script = ExtResource( 1 )
@@ -34,3 +35,5 @@ position = Vector2( 136, 88 )
 [node name="TransitionScene" parent="." instance=ExtResource( 7 )]
 
 [node name="PauseCanvasLayer" parent="." instance=ExtResource( 8 )]
+
+[node name="SpiritBackground" parent="." instance=ExtResource( 9 )]

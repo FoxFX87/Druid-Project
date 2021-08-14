@@ -16,6 +16,8 @@ func _input(event):
 
 func _ready():
 	
+	MusicLibrary._play("MainLoop")
+	
 	unsealed_count = fissures.get_child_count()
 	enemy_count = enemies.get_child_count()
 	

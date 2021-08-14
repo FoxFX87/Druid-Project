@@ -31,5 +31,14 @@ position = Vector2( 184, 72 )
 [node name="PushableStone4" parent="PushableStones" index="3" instance=ExtResource( 2 )]
 position = Vector2( 184, 104 )
 
+[node name="PushableStone5" parent="PushableStones" index="4" instance=ExtResource( 2 )]
+position = Vector2( 216, 40 )
+
+[node name="PushableStone6" parent="PushableStones" index="5" instance=ExtResource( 2 )]
+position = Vector2( 232, 24 )
+
+[node name="PushableStone7" parent="PushableStones" index="6" instance=ExtResource( 2 )]
+position = Vector2( 248, 40 )
+
 [node name="RedSeed" parent="Pickups" index="0" instance=ExtResource( 1 )]
 position = Vector2( 184, 88 )
