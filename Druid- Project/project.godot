@@ -69,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Druid- Project"
-run/main_scene="res://src/Test Scenes/Stages/Cutscene001.tscn"
+run/main_scene="res://src/Test Scenes/Stages/Title Screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

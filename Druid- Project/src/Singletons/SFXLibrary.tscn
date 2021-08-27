@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Singletons/SFXLibrary.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/Magic Sound 96.wav" type="AudioStream" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://Assets/Audio/player_step.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Assets/Audio/Walk on Grass 2.wav" type="AudioStream" id=13]
 [ext_resource path="res://Assets/Audio/React Sound.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Audio/Menu Confirm.wav" type="AudioStream" id=15]
+[ext_resource path="res://Assets/Audio/Menu Close.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Audio/Menu Navigate 1.wav" type="AudioStream" id=17]
+[ext_resource path="res://Assets/Audio/Menu Navigate 2.wav" type="AudioStream" id=18]
 
 [node name="SFXLibrary" type="Node"]
 script = ExtResource( 1 )
@@ -56,3 +60,17 @@ stream = ExtResource( 13 )
 
 [node name="React" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+
+[node name="MenuQuit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="MenuAccept" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="MenuNavigateGroup" type="Node" parent="."]
+
+[node name="MenuNavigate001" type="AudioStreamPlayer" parent="MenuNavigateGroup"]
+stream = ExtResource( 17 )
+
+[node name="MenuNavigate002" type="AudioStreamPlayer" parent="MenuNavigateGroup"]
+stream = ExtResource( 18 )

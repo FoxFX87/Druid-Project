@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Music/Level 1 (Loop).wav" type="AudioStream" id=1]
 [ext_resource path="res://src/Singletons/MusicLibrary.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Music/Level 8 (Loop).wav" type="AudioStream" id=3]
 
 [node name="MusicLibrary" type="Node"]
 script = ExtResource( 2 )
@@ -10,3 +11,6 @@ script = ExtResource( 2 )
 stream = ExtResource( 1 )
 volume_db = -5.0
 mix_target = 1
+
+[node name="TitleLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
