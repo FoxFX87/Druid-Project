@@ -27,24 +27,30 @@ func _ready():
 	
 func _process(_delta):
 	
-	_update_sprite_direction()
-	
-	for dir in inputs.keys():
-		if Input.is_action_pressed(dir):
-			move_vector = inputs[dir]
-			_update_move_ray(dir)
+	match current_state:
+		STATE.MOVE:
+			for dir in inputs.keys():
+				if Input.is_action_pressed(dir):
+					move_vector = inputs[dir]
+					_update_sprite_direction()
+					_update_move_ray(dir)
+					
+					if not move_ray.is_colliding():
+						move_to(dir)
 	
 func move_to(_dir):
 	anim.play("Move")
 	set_process(false)
+	var direction = inputs[_dir] * CELL_SIZE
 	
 	tween.interpolate_property(	self, "position",
-								position, position + _dir,
+								position, position + direction,
 								anim.current_animation_length,
 								Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(anim, "animation_finished")
 	set_process(true)
+	anim.play("Idle")
 	
 func _transition_to_state(_state):
 	if current_state != _state:
