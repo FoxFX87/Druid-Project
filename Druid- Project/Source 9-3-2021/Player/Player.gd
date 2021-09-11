@@ -29,6 +29,11 @@ func _process(_delta):
 	
 	match current_state:
 		STATE.MOVE:
+			anim.play("Idle")
+			
+			if tween.is_active():
+				return
+			
 			for dir in inputs.keys():
 				if Input.is_action_pressed(dir):
 					move_vector = inputs[dir]
@@ -37,6 +42,18 @@ func _process(_delta):
 					
 					if not move_ray.is_colliding():
 						move_to(dir)
+			
+			if Input.is_action_just_pressed("in_attack"):
+				_transition_to_state(STATE.PREPARE_ATTACK)
+				
+		STATE.ATTACK:
+			pass
+			
+		STATE.PREPARE_ATTACK:
+			anim.play("Prepare Attack")
+			
+			if Input.is_action_just_pressed("in_attack"):
+				_transition_to_state(STATE.MOVE)
 	
 func move_to(_dir):
 	anim.play("Move")
