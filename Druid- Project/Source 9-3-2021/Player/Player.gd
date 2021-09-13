@@ -54,6 +54,9 @@ func _process(_delta):
 			
 			if Input.is_action_just_pressed("in_attack"):
 				_transition_to_state(STATE.MOVE)
+				
+		STATE.PUSH:
+			pass
 	
 func move_to(_dir):
 	anim.play("Move")
