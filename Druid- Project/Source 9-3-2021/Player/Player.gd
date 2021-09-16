@@ -11,7 +11,7 @@ var inputs = {
 
 var current_state
 var move_vector : Vector2 
-var push_target : PushObject
+var push_target
 var push_vector : Vector2 
 
 onready var sprite = $Sprite
@@ -42,6 +42,12 @@ func _process(_delta):
 					
 					if not move_ray.is_colliding():
 						move_to(dir)
+					else:
+						var obj = move_ray.get_collider()
+						if obj.is_in_group("Push"):
+							push_target = obj
+							push_vector = inputs[dir]
+							_transition_to_state(STATE.PUSH)
 			
 			if Input.is_action_just_pressed("in_attack"):
 				_transition_to_state(STATE.PREPARE_ATTACK)
@@ -56,7 +62,7 @@ func _process(_delta):
 				_transition_to_state(STATE.MOVE)
 				
 		STATE.PUSH:
-			pass
+			anim.play("Push")
 	
 func move_to(_dir):
 	anim.play("Move")
@@ -72,9 +78,15 @@ func move_to(_dir):
 	set_process(true)
 	anim.play("Idle")
 	
+func _push_block():
+	push_target.push_to(push_vector)
+	
 func _transition_to_state(_state):
 	if current_state != _state:
 		current_state = _state
+		
+func _transition_to_move():
+	_transition_to_state(STATE.MOVE)
 		
 func _update_sprite_direction():
 	if move_vector.x != 0:
