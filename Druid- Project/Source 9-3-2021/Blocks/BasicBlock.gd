@@ -16,4 +16,14 @@ func push_to(dir):
 	update_ray(dir)
 	
 	if not move_ray.is_colliding():
-		position += dir * CELL_SIZE
+		move_block(dir)
+
+func move_block(dir):
+	#position += dir * CELL_SIZE
+	
+	var _dir = dir * CELL_SIZE
+	
+	$TweenMove.interpolate_property(self, "position",
+									position, position + _dir,
+									0.1, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	$TweenMove.start()

@@ -128,7 +128,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -4 )
 hframes = 35
-frame = 14
+frame = 13
 __meta__ = {
 "_editor_description_": ""
 }

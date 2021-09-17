@@ -15,9 +15,12 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="MoveRay" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 16 )
 collide_with_areas = true
+
+[node name="TweenMove" type="Tween" parent="."]
