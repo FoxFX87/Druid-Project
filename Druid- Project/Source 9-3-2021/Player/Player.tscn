@@ -20,6 +20,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 6, 7, 8, 9, 10, 11, 12 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_transition_to_move"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.5
@@ -128,7 +142,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -4 )
 hframes = 35
-frame = 13
+frame = 9
 __meta__ = {
 "_editor_description_": ""
 }
@@ -156,3 +170,5 @@ anims/Move = SubResource( 3 )
 anims/Plant = SubResource( 4 )
 "anims/Prepare Attack" = SubResource( 5 )
 anims/Push = SubResource( 6 )
+
+[connection signal="tween_all_completed" from="TweenMove" to="." method="_on_TweenMove_tween_all_completed"]
