@@ -19,3 +19,9 @@ onready var IMAGES = {
 	"red seed"			: preload("res://Assets/Images/spr_red_seed_001.png"),
 	"blue seed"			: preload("res://Assets/Images/spr_blue_seed_001.png")
 }
+
+onready var SPELLS = {
+	"gravel"			: preload("res://Source 9-3-2021/Spells/GravelSpell.tscn"),
+	"water"				: preload("res://Source 9-3-2021/Spells/WaterSpell.tscn"),
+	"wind"				: preload("res://Source 9-3-2021/Spells/WindSpell.tscn")
+}

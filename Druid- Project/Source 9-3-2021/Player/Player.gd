@@ -18,6 +18,7 @@ onready var sprite = $Sprite
 onready var move_ray = $MoveRay
 onready var tween = $TweenMove
 onready var anim = $AnimationPlayer
+onready var current_spell = PreloadedScenes.SPELLS["wind"]
 
 func _ready():
 	MainInstances.player = self
@@ -90,6 +91,7 @@ func _push_block():
 	
 func _transition_to_state(_state):
 	if current_state != _state:
+		_get_special_floors()
 		current_state = _state
 		
 func _transition_to_move():
@@ -106,7 +108,8 @@ func _update_move_ray(dir):
 
 func _get_special_floors():
 	
-	var detected_floor = "DEFAULT"
+	var _detected_floor = "DEFAULT"
+	current_spell = PreloadedScenes.SPELLS["wind"]
 	
 	for b in get_overlapping_bodies():
 		if b is TileMap:
@@ -116,12 +119,21 @@ func _get_special_floors():
 			
 			match tile_name:
 				"Grass":
-					detected_floor = "GRASS"
+					_detected_floor = "GRASS"
+					current_spell = PreloadedScenes.SPELLS["wind"]
 				"Gravel":
-					detected_floor = "GRAVEL"
+					_detected_floor = "GRAVEL"
+					current_spell = PreloadedScenes.SPELLS["gravel"]
 				"Water":
-					detected_floor = "WATER"
-	print(detected_floor)
+					_detected_floor = "WATER"
+					current_spell = PreloadedScenes.SPELLS["water"]
+
+func _cast_spell():
+	var p = current_spell.instance()
+	p.direction = move_vector
+	p.position = global_position + move_ray.cast_to/2
+	p.rotation_degrees = rad2deg(move_ray.cast_to.angle())
+	get_parent().add_child(p)
 
 func _on_TweenMove_tween_all_completed():
 	_get_special_floors()

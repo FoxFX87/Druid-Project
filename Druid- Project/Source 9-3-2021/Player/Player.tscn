@@ -27,9 +27,12 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.35 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.15, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "_cast_spell"
+}, {
 "args": [  ],
 "method": "_transition_to_move"
 } ]
