@@ -25,10 +25,10 @@ func _on_Spell_area_entered(_area):
 	match attack_type:
 		
 		DAMAGE_TYPE.WIND:
+			pass
+		DAMAGE_TYPE.GRAVEL:
 			if _area.is_in_group("Push"):
 				_area.push_to(direction)
-		DAMAGE_TYPE.GRAVEL:
-			pass
 		DAMAGE_TYPE.WATER:
 			pass
 
