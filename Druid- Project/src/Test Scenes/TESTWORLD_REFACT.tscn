@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Source 9-3-2021/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Camera/Camera2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/TileMap Scene/FloorTile_Refactor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Source 9-3-2021/Enemies/Enemy_Spid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/TileMap Scene/SolidTile_Refactor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Source 9-3-2021/Blocks/BasicBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/TileMap Scene/BaseTileMap.tscn" type="PackedScene" id=7]
@@ -36,7 +37,19 @@ tile_data = PoolIntArray( 65541, 1, 0, 65542, 1, 1, 65543, 1, 1, 65544, 1, 0, 13
 [node name="WorldYSort" type="YSort" parent="."]
 
 [node name="Player" parent="WorldYSort" instance=ExtResource( 1 )]
-position = Vector2( 88, 56 )
+position = Vector2( 200, 40 )
+
+[node name="Enemies" type="YSort" parent="WorldYSort"]
+
+[node name="Enemy_Spid" parent="WorldYSort/Enemies" instance=ExtResource( 4 )]
+position = Vector2( 104, 72 )
+collision_layer = 0
+collision_mask = 17
+
+[node name="Enemy_Spid2" parent="WorldYSort/Enemies" instance=ExtResource( 4 )]
+position = Vector2( 248, 40 )
+collision_layer = 0
+collision_mask = 17
 
 [node name="Solid" parent="WorldYSort" instance=ExtResource( 5 )]
 tile_data = PoolIntArray( 12, 6, 0, 65545, 6, 0, 131079, 5, 0, 196615, 4, 0, 262154, 5, 0, 262156, 4, 0, 393224, 4, 0, 458765, 5, 0, 589834, 5, 0 )
@@ -44,7 +57,7 @@ tile_data = PoolIntArray( 12, 6, 0, 65545, 6, 0, 131079, 5, 0, 196615, 4, 0, 262
 [node name="PushBlocks" type="Node2D" parent="WorldYSort"]
 
 [node name="BasicBlock" parent="WorldYSort/PushBlocks" instance=ExtResource( 6 )]
-position = Vector2( 168, 40 )
+position = Vector2( 216, 40 )
 
 [node name="BasicBlock2" parent="WorldYSort/PushBlocks" instance=ExtResource( 6 )]
 position = Vector2( 184, 104 )

@@ -3,6 +3,7 @@ extends Unit
 onready var move_ray = $MoveRay
 
 var move_vector
+var can_push : bool = true
 
 func _ready():
 	position = position.snapped(Vector2.ONE * CELL_SIZE)
@@ -17,9 +18,13 @@ func push_to(dir):
 	
 	if not move_ray.is_colliding():
 		move_block(dir)
+		can_push = true
+	else:
+		can_push = false
 
 func move_block(dir):
-	#position += dir * CELL_SIZE
+	if not can_push:
+		return
 	
 	var _dir = dir * CELL_SIZE
 	

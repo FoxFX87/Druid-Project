@@ -147,6 +147,8 @@ in_attack={
 2d_physics/layer_3="Pickup"
 2d_physics/layer_4="Projectiles"
 2d_physics/layer_5="Fissures"
+2d_physics/layer_6="Enemy"
+2d_physics/layer_7="Player"
 
 [physics]
 
