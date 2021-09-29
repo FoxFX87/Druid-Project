@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Unit",
+"class": "Movable_Unit",
+"language": "GDScript",
+"path": "res://Movable_Unit.gd"
+}, {
+"base": "Movable_Unit",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scenes/Unit/Player/Player.gd"
+}, {
 "base": "Area2D",
 "class": "Unit",
 "language": "GDScript",
 "path": "res://Scenes/Unit/Unit.gd"
 } ]
 _global_script_class_icons={
+"Movable_Unit": "",
+"Player": "",
 "Unit": ""
 }
 
@@ -29,8 +41,8 @@ Global="*res://Global.gd"
 
 [display]
 
-window/size/width=426
-window/size/height=240
+window/size/width=320
+window/size/height=180
 window/size/resizable=false
 window/size/test_width=1280
 window/size/test_height=720
@@ -59,6 +71,12 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Unit"
+2d_physics/layer_3="Floor"
 
 [physics]
 
