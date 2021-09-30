@@ -26,3 +26,15 @@ func _move_to(dir : Vector2):
 		var _start_tween = tween.start()
 	else:
 		self.position += dir * tile_size
+		
+func _move_to_anim(dir : Vector2, anim : AnimationPlayer):
+	
+	if tween:
+		var _move_tween = tween.interpolate_property(	self, "position", 
+									self.position,
+									self.position + (dir * tile_size),
+									anim.current_animation_length, 
+									Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		var _start_tween = tween.start()
+	else:
+		self.position += dir * tile_size
