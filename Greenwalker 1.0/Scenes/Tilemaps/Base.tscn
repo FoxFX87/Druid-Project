@@ -2,8 +2,9 @@
 
 [ext_resource path="res://Resources/floors_tileset.tres" type="TileSet" id=1]
 
-[node name="Floors" type="TileMap"]
+[node name="Base" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+cell_y_sort = true
 collision_mask = 0
 format = 1

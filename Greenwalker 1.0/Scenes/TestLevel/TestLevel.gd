@@ -10,8 +10,6 @@ func _ready():
 		f.connect("_sealed", self, "_update_fissure_count")
 		sealed_fissures += 1
 
-	
-
 func _update_fissure_count():
 	sealed_fissures -= 1
 	

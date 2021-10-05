@@ -8,7 +8,7 @@ const inputs = {
 	"ui_down" : Vector2.DOWN,
 }
 
-enum STATE {MOVE, PUSH}
+enum STATE {MOVE, PUSH, CAST, ATTACK}
 
 onready var anim = $AnimationPlayer
 onready var sprite = $Sprite
@@ -30,7 +30,10 @@ func _process(delta):
 			_get_inputs()
 		STATE.PUSH:
 			anim.play("Push")
-			pass
+		STATE.CAST:
+			anim.play("Cast")
+		STATE.ATTACK:
+			anim.play("Attack")
 		
 func _get_inputs():
 	
@@ -42,6 +45,9 @@ func _get_inputs():
 			_update_sprite(inputs[dir])
 			_move_to(inputs[dir])
 			input_delay = 0.0
+			
+	if Input.is_action_just_pressed("in_cast"):
+		_transition_to_state(STATE.CAST)
 
 func _can_move_to(dir : Vector2) -> bool:
 	
@@ -58,6 +64,9 @@ func _can_move_to(dir : Vector2) -> bool:
 		push_target = collider
 		push_direction = dir
 		_transition_to_state(STATE.PUSH)
+		return false
+	elif collider.is_in_group("enemy"):
+		_transition_to_state(STATE.ATTACK)
 		return false
 	else:
 		return false
