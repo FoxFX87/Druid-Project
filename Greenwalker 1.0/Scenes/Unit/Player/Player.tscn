@@ -159,7 +159,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -2 )
 hframes = 35
-frame = 11
+frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource( 1 )
