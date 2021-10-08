@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Resources/unit_collision_shape.tres" type="Shape2D" id=1]
+[ext_resource path="res://Scenes/Attacks/AttackParent.gd" type="Script" id=2]
 
 [node name="Attack" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -12,3 +14,5 @@ collision_mask = 2
 shape = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

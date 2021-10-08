@@ -6,7 +6,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
 length = 0.8
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -25,7 +24,7 @@ tracks/0/keys = {
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
-offset = Vector2( 7, 0 )
+offset = Vector2( 0, -3 )
 hframes = 16
 frame = 10
 

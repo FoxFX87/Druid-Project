@@ -16,6 +16,7 @@ onready var sprite = $Sprite
 var current_state = STATE.MOVE
 var input_delay : float = 0.0
 var push_target : Unit = null
+var attack_target : Unit = null
 var push_direction : Vector2
 
 func _process(delta):
@@ -66,6 +67,7 @@ func _can_move_to(dir : Vector2) -> bool:
 		_transition_to_state(STATE.PUSH)
 		return false
 	elif collider.is_in_group("enemy"):
+		attack_target = collider
 		_transition_to_state(STATE.ATTACK)
 		return false
 	else:
@@ -96,5 +98,13 @@ func _transition_to_state(_state):
 		
 func _transition_to_move():
 	push_target = null
+	attack_target = null
 	push_direction = Vector2.ZERO
 	_transition_to_state(STATE.MOVE)
+
+func _create_attack():
+	var _inst = Instances.ATTACKGRAVEL
+	var _pos = attack_target.global_position
+	var _attack = Instances._instance_scene_to_main(_inst, _pos)
+	_attack.scale.x = sprite.scale.x
+	

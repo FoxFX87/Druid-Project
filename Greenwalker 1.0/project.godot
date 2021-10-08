@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://Scenes/Attacks/AttackParent.gd"
+}, {
 "base": "Movable_Unit",
 "class": "Block",
 "language": "GDScript",
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/Unit/Unit.gd"
 } ]
 _global_script_class_icons={
+"Attack": "",
 "Block": "",
 "Enemy": "",
 "Fissure": "",
@@ -55,7 +61,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://Singletons/Global.gd"
+Instances="*res://Singletons/Instances.gd"
 
 [display]
 
