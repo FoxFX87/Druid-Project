@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Resources/unit_collision_shape.tres" type="Shape2D" id=1]
 [ext_resource path="res://Assets/spr_druid_005.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Unit/Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Stats/Stats.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Attack"
@@ -183,3 +184,8 @@ anims/Move = SubResource( 5 )
 anims/Push = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Stats" parent="." instance=ExtResource( 4 )]
+max_health = 7
+
+[connection signal="_died" from="Stats" to="." method="_on_Stats__died"]

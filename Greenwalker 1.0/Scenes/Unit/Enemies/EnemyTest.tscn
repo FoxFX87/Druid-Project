@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/unit_collision_shape.tres" type="Shape2D" id=1]
 [ext_resource path="res://Assets/spr_enemy_002.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Unit/Enemies/EnemyTest.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Stats/Stats.tscn" type="PackedScene" id=4]
 
 [node name="EnemyTest" type="Area2D" groups=[
 "enemy",
@@ -23,3 +24,7 @@ enabled = true
 cast_to = Vector2( 0, 16 )
 collision_mask = 11
 collide_with_areas = true
+
+[node name="Stats" parent="." instance=ExtResource( 4 )]
+
+[connection signal="_died" from="Stats" to="." method="_on_Stats__died"]

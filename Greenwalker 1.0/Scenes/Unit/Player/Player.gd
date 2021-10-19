@@ -8,16 +8,22 @@ const inputs = {
 	"ui_down" : Vector2.DOWN,
 }
 
-enum STATE {MOVE, PUSH, CAST, ATTACK}
+enum STATE {MOVE, CAST, ATTACK}
 
 onready var anim = $AnimationPlayer
 onready var sprite = $Sprite
+onready var stats = $Stats
 
 var current_state = STATE.MOVE
 var input_delay : float = 0.0
-var push_target : Unit = null
 var attack_target : Unit = null
-var push_direction : Vector2
+var has_mana : bool = true
+
+func _ready():
+	MainInstances._main_player = self
+	
+func _exit_tree():
+	MainInstances._main_player = null
 
 func _process(delta):
 	
@@ -29,8 +35,6 @@ func _process(delta):
 		STATE.MOVE:
 			anim.play("Idle")
 			_get_inputs()
-		STATE.PUSH:
-			anim.play("Push")
 		STATE.CAST:
 			anim.play("Cast")
 		STATE.ATTACK:
@@ -60,12 +64,6 @@ func _can_move_to(dir : Vector2) -> bool:
 	
 	if not collider:
 		return true
-		
-	elif collider.has_method("_can_move_to"):
-		push_target = collider
-		push_direction = dir
-		_transition_to_state(STATE.PUSH)
-		return false
 	elif collider.is_in_group("enemy"):
 		attack_target = collider
 		_transition_to_state(STATE.ATTACK)
@@ -87,19 +85,12 @@ func _update_sprite(dir : Vector2):
 	if dir.x != 0:
 		sprite.scale.x = dir.x
 
-func _push_object_to():
-	if push_target.has_method("_can_move_to"):
-		if push_target._can_move_to(push_direction):
-			push_target._move_to(push_direction)
-
 func _transition_to_state(_state):
 	if current_state != _state:
 		current_state = _state
 		
 func _transition_to_move():
-	push_target = null
 	attack_target = null
-	push_direction = Vector2.ZERO
 	_transition_to_state(STATE.MOVE)
 
 func _create_attack():
@@ -107,4 +98,13 @@ func _create_attack():
 	var _pos = attack_target.global_position
 	var _attack = Instances._instance_scene_to_main(_inst, _pos)
 	_attack.scale.x = sprite.scale.x
+	stats.health -= 1
 	
+
+func _on_Stats__died():
+	
+	if has_mana:
+		has_mana = false
+	else:
+		yield(anim, "animation_finished")
+		queue_free()

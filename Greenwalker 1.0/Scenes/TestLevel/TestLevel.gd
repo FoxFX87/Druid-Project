@@ -1,17 +1,17 @@
 extends Node2D
 
-var sealed_fissures : int
+onready var enemies = $WorldYSort/Enemies
+onready var enemy_ui_count = $UI/UI/EnemyCountUI/Label
 
-onready var fissures = $WorldYSort/Fissures
+var enemy_count : int = 0
 
 func _ready():
-	
-	for f in fissures.get_children():
-		f.connect("_sealed", self, "_update_fissure_count")
-		sealed_fissures += 1
+	for enemy in enemies.get_child_count():
+		enemies.get_child(enemy).connect("_died", self, "update_ui_count")
+		enemy_count += 1
+		
+	enemy_ui_count.text = str(enemy_count)
 
-func _update_fissure_count():
-	sealed_fissures -= 1
-	
-	if sealed_fissures <= 0:
-		print("GAME OVER")
+func update_ui_count():
+	enemy_count -= 1
+	enemy_ui_count.text = str(enemy_count)
