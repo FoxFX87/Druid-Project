@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Unit/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Stats/Stats.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Attack"
 length = 0.3
 step = 0.025
@@ -39,10 +39,9 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Cast"
-length = 0.25
-step = 0.025
+length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -50,7 +49,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.025, 0.05, 0.075, 0.1, 0.15, 0.2, 0.225, 0.25 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 26, 27, 28, 29, 30, 31, 32, 33, 34 ]
@@ -62,16 +61,15 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.25 ),
+"times": PoolRealArray( 0.8 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_transition_to_move"
+"method": "_end_animation"
 } ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Charge"
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -86,8 +84,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -120,8 +117,7 @@ tracks/0/keys = {
 "values": [ 22, 23, 24, 25 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Push"
+[sub_resource type="Animation" id=6]
 length = 0.2
 step = 0.025
 tracks/0/type = "value"
@@ -163,7 +159,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -2 )
 hframes = 35
-frame = 6
+frame = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource( 1 )
@@ -176,12 +172,12 @@ collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Attack = SubResource( 4 )
-anims/Cast = SubResource( 6 )
-anims/Charge = SubResource( 1 )
-anims/Idle = SubResource( 2 )
+anims/Attack = SubResource( 1 )
+anims/Cast = SubResource( 2 )
+anims/Charge = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 anims/Move = SubResource( 5 )
-anims/Push = SubResource( 3 )
+anims/Push = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
 

@@ -8,7 +8,7 @@ const inputs = {
 	"ui_down" : Vector2.DOWN,
 }
 
-enum STATE {MOVE, CAST, ATTACK}
+enum STATE {MOVE, CAST, ATTACK, STANDBY}
 
 onready var anim = $AnimationPlayer
 onready var sprite = $Sprite
@@ -18,6 +18,7 @@ var current_state = STATE.MOVE
 var input_delay : float = 0.0
 var attack_target : Unit = null
 var has_mana : bool = true
+var has_entered_exit : bool = false
 
 func _ready():
 	MainInstances._main_player = self
@@ -39,6 +40,8 @@ func _process(delta):
 			anim.play("Cast")
 		STATE.ATTACK:
 			anim.play("Attack")
+		STATE.STANDBY:
+			pass
 		
 func _get_inputs():
 	
@@ -51,7 +54,10 @@ func _get_inputs():
 			_move_to(inputs[dir])
 			input_delay = 0.0
 			
-	if Input.is_action_just_pressed("in_cast"):
+#	if Input.is_action_just_pressed("in_cast"):
+#		_transition_to_state(STATE.CAST)
+		
+	if has_entered_exit:
 		_transition_to_state(STATE.CAST)
 
 func _can_move_to(dir : Vector2) -> bool:
@@ -91,6 +97,7 @@ func _transition_to_state(_state):
 		
 func _transition_to_move():
 	attack_target = null
+	has_entered_exit = false
 	_transition_to_state(STATE.MOVE)
 
 func _create_attack():
@@ -100,6 +107,10 @@ func _create_attack():
 	_attack.scale.x = sprite.scale.x
 	stats.health -= 1
 	
+
+func _end_animation():
+	anim.stop(false)
+	_transition_to_state(STATE.STANDBY)
 
 func _on_Stats__died():
 	
