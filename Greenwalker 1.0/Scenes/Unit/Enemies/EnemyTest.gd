@@ -2,6 +2,8 @@ extends Enemy
 
 signal _died()
 
+export (int, 1, 5) var damage = 1
+
 onready var stats = $Stats
 onready var target : Unit = MainInstances._main_player
 

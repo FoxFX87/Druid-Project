@@ -105,7 +105,7 @@ func _create_attack():
 	var _pos = attack_target.global_position
 	var _attack = Instances._instance_scene_to_main(_inst, _pos)
 	_attack.scale.x = sprite.scale.x
-	stats.health -= 1
+	stats.health -= attack_target.damage
 	
 
 func _end_animation():
